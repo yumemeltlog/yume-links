@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hiraku. - 自分を、ひらく時間。</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF4EC;
+    --bg-2: #F3E2D9;
+    --accent: #B58A7A;
+    --accent-dark: #5A2F28;
+    --text: #3A2A26;
+    --text-mid: #8A6F64;
+    --line: rgba(181,138,122,0.25);
+    --card: #FFFBF5;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Noto Serif JP', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+  }
+  .back-bar {
+    padding: 14px 24px;
+    font-size: 12px;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--line);
+    background: var(--card);
+    font-family:'Noto Sans JP', sans-serif;
+  }
+  .back-bar a { color: var(--accent-dark); text-decoration: none; font-weight: 700; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 28px; }
+
+  /* HERO */
+  .hero {
+    padding: 72px 28px 72px;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 20%, rgba(181,138,122,0.25) 0%, transparent 70%),
+      linear-gradient(180deg, #FAF4EC 0%, #F3E2D9 100%);
+  }
+  .hero .eyebrow {
+    font-family:'Cormorant Garamond', serif;
+    font-size: 13px; letter-spacing: 4px;
+    color: var(--accent-dark); text-transform: uppercase;
+    padding-bottom: 10px; border-bottom: 1px solid var(--accent);
+    max-width: fit-content; margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: 44px; line-height: 1.5;
+    color: var(--accent-dark);
+    font-weight: 400;
+    margin-bottom: 28px;
+    letter-spacing: 0.04em;
+  }
+  .hero p.lede {
+    font-size: 15px; color: var(--text-mid);
+    line-height: 2.1;
+    margin-bottom: 36px;
+    font-family:'Noto Sans JP', sans-serif;
+  }
+  .hero-mock {
+    max-width: 440px; width: 100%;
+    border-radius: 4px; overflow: hidden;
+    margin-bottom: 36px;
+    box-shadow: 0 24px 60px rgba(90,47,40,0.18);
+  }
+  .hero-mock img { display:block; width:100%; height:auto; }
+  .btn {
+    display: inline-block;
+    padding: 18px 40px;
+    background: var(--accent-dark);
+    color: var(--bg);
+    font-family:'Noto Sans JP', sans-serif;
+    font-weight: 700; font-size: 14px;
+    text-decoration: none; letter-spacing: 2px;
+    transition: .2s;
+    border-radius: 2px;
+  }
+  .btn:hover { background: #3e1f1a; }
+  .btn.outline { background: transparent; color: var(--accent-dark); border: 1px solid var(--accent-dark); }
+
+  /* GENERAL SECTIONS */
+  section { padding: 72px 0; }
+  section.card { background: var(--card); }
+  .section-label {
+    font-family:'Cormorant Garamond', serif;
+    font-size: 14px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent); text-align:center;
+    margin-bottom: 6px;
+  }
+  h2 {
+    font-size: 26px; text-align:center;
+    color: var(--accent-dark); font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: 36px;
+  }
+
+  .message { font-size: 15px; text-align:center; line-height:2.2; color: var(--text-mid); font-family:'Noto Sans JP', sans-serif; }
+  .message em { font-style: normal; color: var(--accent-dark); font-weight: 700; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+
+  .program { display: grid; gap: 20px; grid-template-columns: 1fr; }
+  .prog-item {
+    background: var(--card);
+    padding: 28px 24px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+  .prog-num {
+    font-family:'Cormorant Garamond', serif;
+    font-size: 28px; color: var(--accent); letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .prog-title { font-size: 18px; color: var(--accent-dark); margin-bottom: 10px; }
+  .prog-desc { font-size: 13px; color: var(--text-mid); font-family:'Noto Sans JP', sans-serif; line-height: 1.9; }
+
+  .coach {
+    display:flex; gap: 20px; align-items:flex-start;
+    background: var(--bg-2); padding: 28px; border-radius: 4px;
+  }
+  .coach-avatar {
+    width: 80px; height: 80px; flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #B58A7A, #5A2F28);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--bg); font-size: 28px; font-family:'Cormorant Garamond', serif;
+  }
+  .coach-name { font-size: 18px; color: var(--accent-dark); }
+  .coach-role { font-size: 11px; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-family:'Noto Sans JP', sans-serif; }
+  .coach-bio { font-size: 13px; color: var(--text-mid); font-family:'Noto Sans JP', sans-serif; line-height: 1.9; }
+
+  .price-box {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 36px 24px; text-align:center;
+    border-radius: 4px;
+  }
+  .price-kicker { font-size: 12px; letter-spacing: 3px; color: var(--accent); font-family:'Noto Sans JP', sans-serif; margin-bottom: 12px; }
+  .price-amount { font-family:'Cormorant Garamond', serif; font-size: 42px; color: var(--accent-dark); margin-bottom: 4px; }
+  .price-amount small { font-size: 14px; font-family:'Noto Sans JP', sans-serif; }
+  .price-note { font-size: 12px; color: var(--text-mid); font-family:'Noto Sans JP', sans-serif; margin-bottom: 24px; }
+
+  footer {
+    padding: 40px 24px;
+    text-align:center;
+    font-size: 11px; color: var(--text-mid);
+    font-family:'Noto Sans JP', sans-serif;
+    border-top: 1px solid var(--line);
+    background: var(--card);
+    letter-spacing: 1px;
+  }
+  @media (min-width: 600px) {
+    .program { grid-template-columns: repeat(3, 1fr); }
+    .hero h1 { font-size: 52px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="../../works.html">← 実績ギャラリーに戻る</a>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Personal Coaching</div>
+    <h1>自分を、<br>ひらく時間。</h1>
+    <p class="lede">
+      忙しい毎日の中で、いつのまにか<br>
+      自分の気持ちがわからなくなっていませんか。<br><br>
+      hiraku. は、ひとりの女性として<br>
+      「本当に望む人生」を言葉にしていく、<br>
+      90日間のパーソナルコーチングです。
+    </p>
+    <div class="hero-mock">
+      <img src="../images/lp-02-female-coach.png" alt="パーソナルコーチングLPモックアップ" loading="lazy">
+    </div>
+    <a href="#cta" class="btn">無料カウンセリングを予約する →</a>
+  </div>
+</div>
+
+<section class="card">
+  <div class="wrap">
+    <div class="section-label">Message</div>
+    <h2>私たちの想い</h2>
+    <p class="message">
+      人生のどこかで、<em>「これでいいのかな」</em>と立ち止まる瞬間があります。<br><br>
+      それは弱さではなく、次のステージに進もうとする<br>心のサインなのかもしれません。<br><br>
+      hiraku. はその一歩を、<br>静かに伴走するコーチングです。
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Program</div>
+    <h2>90日間のプログラム</h2>
+    <div class="program">
+      <div class="prog-item">
+        <div class="prog-num">01</div>
+        <div class="prog-title">Unfold</div>
+        <div class="prog-desc">今の心の状態を丁寧に可視化。自分の「本当の声」に気づく30日。</div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-num">02</div>
+        <div class="prog-title">Define</div>
+        <div class="prog-desc">理想の未来を「具体的な言葉」に落とし込む、価値観の定義フェーズ。</div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-num">03</div>
+        <div class="prog-title">Act</div>
+        <div class="prog-desc">小さな一歩を習慣に。アクションを具体化し、変化を定着させる30日。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <div class="wrap">
+    <div class="section-label">Coach</div>
+    <h2>コーチ紹介</h2>
+    <div class="coach">
+      <div class="coach-avatar">h.</div>
+      <div>
+        <div class="coach-name">Haruka Fujimori</div>
+        <div class="coach-role">CERTIFIED LIFE COACH</div>
+        <div class="coach-bio">
+          10年以上、女性のキャリアと心の伴走を続けるパーソナルコーチ。
+          国際コーチング連盟(ICF)認定／延べ400名以上の女性をサポート。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Plan</div>
+    <h2>プログラム料金</h2>
+    <div class="price-box">
+      <div class="price-kicker">90-DAY PROGRAM</div>
+      <div class="price-amount">¥178,000<small>（税込）</small></div>
+      <div class="price-note">全12回セッション／チャットサポート込み／分割払い可</div>
+      <a href="#cta" class="btn">無料カウンセリングを予約する →</a>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="cta">
+  <div class="wrap" style="text-align:center;">
+    <div class="section-label">Contact</div>
+    <h2>まずは、話すことから。</h2>
+    <p class="message">
+      30分の無料カウンセリングで、<br>今のお気持ちを一緒に整理します。<br>
+      お申し込みフォームよりご予約ください。
+    </p>
+    <div style="margin-top:28px;">
+      <a href="#" class="btn">無料カウンセリングを予約する</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>hiraku. / personal coaching for women</div>
+  <div style="margin-top:6px;">© 2026 hiraku. / Design by yume.meltlog_ 🍒</div>
+  <div style="margin-top:4px;">これは yume-links の実績として作成したデモLPです</div>
+</footer>
+
+</body>
+</html>

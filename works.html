@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品ギャラリー - ゆめ🍒</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #FF6B9D;
+      --cherry: #C0003C;
+      --dark: #0F0008;
+      --dark2: #1E0015;
+      --text: #FFE0ED;
+      --text-mid: rgba(255,224,237,0.6);
+      --line: rgba(255,107,157,0.2);
+      --grad: linear-gradient(135deg, #FF6B9D, #C0003C);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Noto Sans JP', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 80px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before {
+      content:'';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,107,157,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(192,0,60,0.12) 0%, transparent 70%);
+    }
+    .wrap {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 560px;
+      margin: 0 auto;
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--pink); text-decoration: none;
+      font-size: 12px; font-weight: 700;
+      background: rgba(255,107,157,0.08);
+      border: 1px solid var(--line);
+      padding: 8px 16px; border-radius: 999px;
+      transition: .18s;
+      margin-bottom: 28px;
+    }
+    .back-link:hover {
+      background: rgba(255,107,157,0.18);
+      border-color: var(--pink);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .kicker {
+      font-family:'Fredoka One', cursive;
+      font-size: 11px; letter-spacing: 4px;
+      color: var(--pink); text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .title {
+      font-family:'Fredoka One', cursive;
+      font-size: 32px;
+      background: var(--grad);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 13px; color: var(--text-mid);
+      line-height: 1.9;
+    }
+    .subtitle strong { color: var(--text); font-weight: 700; }
+
+    .gallery {
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .card {
+      display: block;
+      text-decoration: none; color: var(--text);
+      background: rgba(255,107,157,0.05);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: .2s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .card:hover {
+      border-color: var(--pink);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(255,107,157,0.25);
+    }
+    .card-thumb {
+      position: relative;
+      background: var(--dark2);
+      aspect-ratio: 3/4;
+      max-height: 440px;
+      overflow: hidden;
+    }
+    .card-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .4s ease;
+    }
+    .card:hover .card-thumb img { transform: scale(1.02); }
+    .card-thumb::after {
+      content: 'OPEN LP →';
+      position: absolute; bottom: 12px; right: 12px;
+      background: rgba(15,0,8,0.85);
+      color: var(--pink);
+      font-family:'Fredoka One', cursive;
+      font-size: 10px; letter-spacing: 2px;
+      padding: 6px 10px; border-radius: 999px;
+      border: 1px solid var(--line);
+      backdrop-filter: blur(4px);
+    }
+
+    .card-body {
+      padding: 20px 22px 22px;
+      border-top: 1px solid var(--line);
+    }
+    .card-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 10px;
+    }
+    .tag {
+      font-size: 10px; letter-spacing: 1px;
+      padding: 3px 10px; border-radius: 999px;
+      background: rgba(255,107,157,0.1);
+      border: 1px solid var(--line);
+      color: var(--pink); font-weight: 700;
+    }
+    .tag.filled {
+      background: var(--grad);
+      color: #fff;
+      border-color: transparent;
+    }
+    .card-title {
+      font-family:'Fredoka One', cursive;
+      font-size: 20px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .card-desc {
+      font-size: 12px; color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    /* Workflow note */
+    .note {
+      margin-top: 48px;
+      padding: 22px 20px;
+      background: rgba(255,107,157,0.06);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      font-size: 12px; color: var(--text-mid);
+      line-height: 2;
+    }
+    .note h3 {
+      font-family:'Fredoka One', cursive;
+      font-size: 14px; color: var(--pink);
+      margin-bottom: 8px; letter-spacing: 1px;
+    }
+    .note code {
+      background: rgba(255,107,157,0.12);
+      color: var(--text);
+      padding: 1px 6px; border-radius: 4px;
+      font-size: 11px;
+    }
+
+    footer {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 11px; color: var(--text-mid);
+      line-height: 1.9;
+    }
+    .brand {
+      font-family:'Fredoka One', cursive;
+      background: var(--grad);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      font-size: 14px;
+    }
+
+    .star {
+      position: fixed; font-size: 14px; pointer-events: none;
+      animation: starFloat linear infinite; opacity: 0;
+    }
+    @keyframes starFloat {
+      0%   { opacity:0; transform:translateY(20px) rotate(0deg); }
+      15%  { opacity:0.5; }
+      85%  { opacity:0.3; }
+      100% { opacity:0; transform:translateY(-120px) rotate(720deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <a href="./index.html" class="back-link">← リンク集に戻る</a>
+
+    <div class="header">
+      <div class="kicker">LP PORTFOLIO 2026</div>
+      <h1 class="title">作品ギャラリー 🎨</h1>
+      <p class="subtitle">
+        <strong>Claude × Midjourney</strong> で制作した<br>
+        AI副業 / 女性向けブランドLPのモックアップ集。
+      </p>
+    </div>
+
+    <div class="gallery">
+
+      <!-- LP 01 -->
+      <a href="./works/lp-01-ai-school/index.html" class="card">
+        <div class="card-thumb">
+          <img src="./works/images/lp-01-ai-school.png" alt="AI副業オンラインスクール LP" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag filled">AI副業</span>
+            <span class="tag">スクール</span>
+            <span class="tag">女性向け</span>
+          </div>
+          <div class="card-title">meltlog Academy</div>
+          <div class="card-desc">
+            「働きながら、AIで副収入。」未経験女性向けAI副業スクールのLP。
+            やわらかピンク × ホワイトの王道アプローチ。
+          </div>
+        </div>
+      </a>
+
+      <!-- LP 02 -->
+      <a href="./works/lp-02-female-coach/index.html" class="card">
+        <div class="card-thumb">
+          <img src="./works/images/lp-02-female-coach.png" alt="女性向けパーソナルコーチング LP" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag filled">コーチング</span>
+            <span class="tag">自己実現</span>
+            <span class="tag">女性向け</span>
+          </div>
+          <div class="card-title">hiraku.</div>
+          <div class="card-desc">
+            「自分を、ひらく時間。」90日間パーソナルコーチングのLP。
+            ベージュ × ダスティピンクで落ち着いた大人の世界観。
+          </div>
+        </div>
+      </a>
+
+      <!-- LP 03 -->
+      <a href="./works/lp-03-ai-pdf/index.html" class="card">
+        <div class="card-thumb">
+          <img src="./works/images/lp-03-ai-pdf.png" alt="AI教材PDF販売 LP" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag filled">デジタル商品</span>
+            <span class="tag">PDF販売</span>
+            <span class="tag">note</span>
+          </div>
+          <div class="card-title">yume.meltlog_ 公式PDF</div>
+          <div class="card-desc">
+            「世界観ごと、AIで売る。」デジタル教材販売用LP。
+            チェリーピンク × ブラック、ゆめ本人ブランドの世界観そのままで。
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="note">
+      <h3>🍒 制作フロー</h3>
+      <div>
+        ① <code>Midjourney / Pixa</code> で LP のビジュアルモックアップを生成<br>
+        ② <code>Claude Code</code> に画像を渡して、世界観ごと HTML/CSS に起こす<br>
+        ③ レスポンシブ対応 → 納品
+      </div>
+    </div>
+
+    <footer>
+      <div class="brand">yume.meltlog_ 🍒</div>
+      <div>AI × LP制作 / Claude × Midjourney</div>
+      <div style="margin-top:4px;">© 2026 ゆめ（@yume.meltlog_）</div>
+    </footer>
+
+  </div>
+
+  <script>
+    const icons = ['🍒','✨','💕','⭐','🌸','💫'];
+    for (let i = 0; i < 12; i++) {
+      const el = document.createElement('div');
+      el.className = 'star';
+      el.textContent = icons[Math.floor(Math.random() * icons.length)];
+      el.style.cssText = `
+        left:${Math.random()*100}vw;
+        top:${Math.random()*100}vh;
+        font-size:${10 + Math.random()*10}px;
+        animation-delay:${Math.random()*8}s;
+        animation-duration:${5 + Math.random()*6}s;
+      `;
+      document.body.appendChild(el);
+    }
+  </script>
+
+</body>
+</html>
