@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>meltlog Academy - 働きながら、AIで副収入。</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #FF6B9D;
+    --primary-dark: #C0003C;
+    --bg: #FFF6FA;
+    --bg-card: #FFFFFF;
+    --text: #3A1E2A;
+    --text-mid: #8A6574;
+    --line: rgba(255,107,157,0.22);
+    --grad: linear-gradient(135deg, #FF6B9D, #C0003C);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .back-bar {
+    padding: 14px 24px;
+    font-size: 12px;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--line);
+    background: #fff;
+  }
+  .back-bar a { color: var(--primary-dark); text-decoration: none; font-weight: 700; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* HERO */
+  .hero {
+    padding: 56px 24px 72px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,107,157,0.25) 0%, transparent 70%),
+      linear-gradient(180deg, #FFF6FA, #FFE8F0);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .pill {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-family:'Fredoka One', cursive;
+    font-size: 12px; letter-spacing: 2px;
+    padding: 7px 18px; border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 40px; line-height: 1.3;
+    color: var(--primary-dark); font-weight: 900;
+    margin-bottom: 16px;
+  }
+  .hero h1 em { font-style: normal; background: var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero p.sub { font-size: 15px; color: var(--text-mid); margin-bottom: 28px; }
+  .hero-mock {
+    max-width: 480px; width: 100%;
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(192,0,60,0.18);
+    margin: 0 auto 28px;
+    border: 6px solid #fff;
+  }
+  .hero-mock img { display:block; width:100%; height:auto; }
+  .cta-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .btn {
+    display: inline-block;
+    padding: 16px 28px;
+    border-radius: 999px;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none; transition: .18s;
+    border: 2px solid transparent;
+  }
+  .btn.primary { background: var(--grad); color:#fff; box-shadow: 0 10px 24px rgba(192,0,60,0.25); }
+  .btn.primary:hover { transform: translateY(-2px); }
+  .btn.ghost { background:#fff; color: var(--primary-dark); border-color: var(--primary); }
+
+  /* SECTIONS */
+  section { padding: 56px 0; }
+  section.alt { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  h2 {
+    font-size: 26px; text-align:center;
+    color: var(--primary-dark); font-weight: 900;
+    margin-bottom: 8px;
+  }
+  h2::after {
+    content:''; display:block; width: 40px; height: 3px;
+    background: var(--grad); margin: 12px auto 0; border-radius: 2px;
+  }
+  .lead { text-align:center; font-size: 14px; color: var(--text-mid); margin-bottom: 32px; }
+
+  /* TROUBLES */
+  .troubles { display: flex; flex-direction: column; gap: 10px; }
+  .trouble {
+    background: #fff; border: 1px solid var(--line);
+    border-left: 4px solid var(--primary);
+    padding: 14px 18px; border-radius: 8px;
+    font-size: 14px;
+  }
+  .trouble::before { content:'✓'; color: var(--primary); font-weight: 900; margin-right:8px; }
+
+  /* FEATURES */
+  .features { display:grid; grid-template-columns: 1fr; gap:16px; }
+  .feature {
+    background: #fff; border: 1px solid var(--line);
+    padding: 22px; border-radius: 16px;
+    text-align:center;
+    box-shadow: 0 6px 18px rgba(255,107,157,0.08);
+  }
+  .feature .ico { font-size: 40px; margin-bottom: 8px; }
+  .feature h3 { font-size: 17px; color: var(--primary-dark); margin-bottom: 6px; }
+  .feature p { font-size: 13px; color: var(--text-mid); }
+
+  /* VOICE */
+  .voice { background:#fff; border-radius:14px; padding:20px; margin-bottom:14px; border:1px solid var(--line); }
+  .voice .who { font-size:12px; color:var(--text-mid); margin-bottom:6px; }
+  .voice .body { font-size:14px; line-height:1.9; }
+  .voice .stars { color: #FFB547; font-size:14px; margin-bottom:6px; }
+
+  /* PRICE */
+  .price-card {
+    background: var(--grad); color:#fff;
+    border-radius: 22px; padding: 32px 24px; text-align:center;
+    box-shadow: 0 20px 48px rgba(192,0,60,0.25);
+  }
+  .price-card .label { font-size:12px; letter-spacing:3px; opacity:0.9; }
+  .price-card .amount { font-family:'Fredoka One', cursive; font-size:48px; margin:8px 0 4px; }
+  .price-card .amount span { font-size:18px; opacity:0.85; }
+  .price-card .note { font-size:12px; opacity:0.85; margin-bottom:20px; }
+  .price-card .btn.primary { background:#fff; color: var(--primary-dark); box-shadow: none; }
+
+  /* FAQ */
+  details { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:10px; }
+  details summary { cursor:pointer; font-weight:700; font-size:14px; list-style:none; color:var(--primary-dark); }
+  details summary::before { content:'Q. '; color: var(--primary); margin-right:4px; }
+  details[open] summary { margin-bottom:8px; }
+  details p { font-size:13px; color: var(--text-mid); line-height:1.9; }
+
+  footer {
+    padding: 40px 24px;
+    text-align:center;
+    font-size: 11px; color: var(--text-mid);
+    border-top: 1px solid var(--line);
+  }
+  @media (min-width: 600px) {
+    .features { grid-template-columns: repeat(3, 1fr); }
+    .hero h1 { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="../../works.html">← 実績ギャラリーに戻る</a>
+</div>
+
+<div class="hero">
+  <span class="pill">AI SIDE-HUSTLE</span>
+  <h1>働きながら、<br><em>AIで副収入。</em></h1>
+  <p class="sub">未経験OK／完全オンライン　女性のためのAI副業スクール</p>
+  <div class="hero-mock">
+    <img src="../images/lp-01-ai-school.png" alt="AI副業スクールLPモックアップ" loading="lazy">
+  </div>
+  <div class="cta-row">
+    <a href="#cta" class="btn primary">▶ 無料説明会に参加</a>
+    <a href="#price" class="btn ghost">資料をダウンロード</a>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>こんなお悩み、ありませんか？</h2>
+    <p class="lead">あてはまる項目が1つでもあれば、meltlog Academyで変われます。</p>
+    <div class="troubles">
+      <div class="trouble">AIに興味はあるけど、何から始めていいか分からない</div>
+      <div class="trouble">家事・育児のスキマ時間で、自分の収入源を持ちたい</div>
+      <div class="trouble">一人で学ぶのは続かない気がする／途中で挫折してしまった</div>
+      <div class="trouble">SNSで稼いでいる人を見て、自分だけ置いていかれる気がする</div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>選ばれる3つの理由</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="ico">🌸</div>
+        <h3>未経験スタート率 92%</h3>
+        <p>デザイン未経験・ITスキルゼロからでも受講できるカリキュラム設計。</p>
+      </div>
+      <div class="feature">
+        <div class="ico">💬</div>
+        <h3>女性講師の1on1伴走</h3>
+        <p>毎週のコーチングと24時間チャットサポートで、挫折させません。</p>
+      </div>
+      <div class="feature">
+        <div class="ico">🍒</div>
+        <h3>最短3ヶ月で実績化</h3>
+        <p>卒業までに必ず1件、受注実績を作るゴール設計。副業開始まで完全サポート。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>受講生の声</h2>
+    <div class="voice">
+      <div class="stars">★★★★★</div>
+      <div class="who">Mさん／30代・会社員</div>
+      <div class="body">3ヶ月目に初めて3万円の受注ができました。PCが苦手な私でも続けられたのは、週1の1on1があったから。</div>
+    </div>
+    <div class="voice">
+      <div class="stars">★★★★★</div>
+      <div class="who">Aさん／40代・主婦</div>
+      <div class="body">「AIなんて難しそう」と思っていたけど、子どもを寝かしつけた後の1時間でちゃんと学べました。</div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="price">
+  <div class="wrap">
+    <h2>受講プラン</h2>
+    <p class="lead">月額プラン／3ヶ月一括プランから選べます。</p>
+    <div class="price-card">
+      <div class="label">MONTHLY PLAN</div>
+      <div class="amount">¥12,800<span>/月</span></div>
+      <div class="note">入会金・教材費すべて込み／いつでも解約OK</div>
+      <a href="#cta" class="btn primary">▶ 無料説明会を予約</a>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="wrap">
+    <h2>よくあるご質問</h2>
+    <details open>
+      <summary>本当に未経験でも大丈夫ですか？</summary>
+      <p>はい。受講生の92%が未経験スタートです。基礎の基礎からカリキュラムを組んでいます。</p>
+    </details>
+    <details>
+      <summary>仕事や家事と両立できますか？</summary>
+      <p>1日30分〜でOK。アーカイブ動画と非同期チャットサポートで、好きな時間に学べます。</p>
+    </details>
+    <details>
+      <summary>解約はいつでもできますか？</summary>
+      <p>月単位で解約可能です。解約金・違約金は一切いただきません。</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 meltlog Academy / Design by yume.meltlog_ 🍒</div>
+  <div style="margin-top:6px;">これは yume-links の実績として作成したデモLPです</div>
+</footer>
+
+</body>
+</html>
