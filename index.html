@@ -3,298 +3,815 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゆめ🍒 リンク集</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <title>世界観LP制作 | ゆめ🍒</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <style>
     :root {
-      --pink: #FF6B9D;
-      --pink2: #FF3D8A;
-      --cherry: #C0003C;
-      --dark: #0F0008;
-      --dark2: #1E0015;
-      --card: rgba(255,107,157,0.08);
-      --text: #FFE0ED;
-      --text-mid: rgba(255,224,237,0.6);
-      --grad: linear-gradient(135deg, #FF6B9D, #C0003C);
+      --cream: #FBF4F0;
+      --cream2: #F5EDE8;
+      --pink-pale: #F5DCE0;
+      --pink: #C4748A;
+      --pink-deep: #9B5070;
+      --gold: #C4A882;
+      --gold2: #A8896A;
+      --text: #3D2525;
+      --text-mid: rgba(61,37,37,0.6);
+      --text-dim: rgba(61,37,37,0.38);
+      --white-glass: rgba(255,255,255,0.72);
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family:'Noto Sans JP', sans-serif;
-      background: var(--dark);
+      font-family: 'Noto Serif JP', serif;
+      background: var(--cream);
       color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 48px 20px 64px;
-      position: relative;
       overflow-x: hidden;
     }
 
-    /* BG */
-    body::before {
-      content:'';
-      position:fixed; inset:0; z-index:0; pointer-events:none;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,107,157,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(192,0,60,0.12) 0%, transparent 70%);
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      background-image: url('./img/img2.jfif');
+      background-size: cover;
+      background-position: center top;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 36px 80px;
     }
-
-    .wrap {
-      position: relative; z-index: 1;
-      width: 100%; max-width: 420px;
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(251,244,240,0.82) 0%,
+        rgba(245,220,224,0.55) 55%,
+        transparent 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      max-width: 420px;
+    }
+    .hero-target {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 0.5px;
+      color: var(--text-mid);
+      line-height: 1.9; margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: clamp(28px, 7vw, 44px);
+      font-weight: 400; line-height: 1.55;
+      letter-spacing: 1px; margin-bottom: 28px;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--pink-deep);
+      display: inline-block;
+      border-bottom: 1px solid var(--pink);
+      padding-bottom: 2px;
+    }
+    .hero-sub {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px; color: var(--text-mid);
+      line-height: 2; margin-bottom: 36px;
+    }
+    .hero-tags {
       display: flex; flex-direction: column;
-      align-items: center; gap: 0;
+      gap: 8px; margin-bottom: 36px;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; color: var(--text);
+    }
+    .hero-tag::before {
+      content: '';
+      width: 18px; height: 1px;
+      background: var(--gold);
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+      color: #fff;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; font-weight: 400; letter-spacing: 1.5px;
+      padding: 16px 36px; border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(155,80,112,0.25);
+      transition: all 0.2s;
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(155,80,112,0.35);
     }
 
-    /* AVATAR */
-    .avatar-wrap {
-      width: 100px; height: 100px;
-      border-radius: 50%; overflow: hidden;
-      border: 3px solid var(--pink);
-      box-shadow: 0 0 0 5px rgba(255,107,157,0.15), 0 8px 32px rgba(255,107,157,0.3);
-      margin-bottom: 16px;
-      animation: float 4s ease-in-out infinite;
+    /* ── ORNAMENT / DIVIDER ── */
+    .ornament {
+      text-align: center;
+      color: var(--gold);
+      font-size: 11px; letter-spacing: 10px;
+      margin-bottom: 10px;
     }
-    @keyframes float {
-      0%,100%{ transform:translateY(0); }
-      50%{ transform:translateY(-8px); }
-    }
-    .avatar-wrap img {
-      width:100%; height:100%; object-fit:cover;
+    .gold-rule {
+      width: 36px; height: 1px;
+      background: var(--gold);
+      margin: 20px auto 40px;
     }
 
-    /* NAME */
-    .name {
-      font-family:'Fredoka One', cursive;
-      font-size: 28px;
-      background: var(--grad);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    /* ── SECTIONS ── */
+    .sec { padding: 80px 28px; }
+    .sec-inner { max-width: 600px; margin: 0 auto; }
+    .sec-title {
+      font-size: clamp(22px, 5.5vw, 34px);
+      font-weight: 400; text-align: center;
+      line-height: 1.55; margin-bottom: 8px;
+    }
+    .sec-title em {
+      font-style: normal;
+      color: var(--pink-deep); font-weight: 600;
+    }
+    .sec-desc {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; color: var(--text-mid);
+      text-align: center; line-height: 2; margin-bottom: 36px;
+    }
+
+    /* ── PAIN ── */
+    .pain-sec {
+      position: relative;
+      background-image: url('./img/img4.jfif');
+      background-size: cover;
+      background-position: center;
+    }
+    .pain-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(251,244,240,0.88);
+    }
+    .pain-sec .sec-inner { position: relative; }
+    .pain-list { display: flex; flex-direction: column; gap: 14px; }
+    .pain-item {
+      background: var(--white-glass);
+      border: 1px solid rgba(196,168,130,0.3);
+      border-radius: 14px;
+      padding: 18px 22px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px; line-height: 1.8;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .pain-item::before {
+      content: '✦';
+      color: var(--gold); font-size: 10px; flex-shrink: 0;
+    }
+
+    /* ── GALLERY / MOCKUP ── */
+    .gallery-sec { padding: 80px 0; background: var(--cream2); }
+    .gallery-inner { max-width: 600px; margin: 0 auto; padding: 0 28px; }
+
+    .mockup-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .mockup-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    /* スマホ枠 */
+    .phone {
+      position: relative;
+      background: #1a0f0f;
+      border-radius: 36px;
+      padding: 14px 10px;
+      box-shadow:
+        0 0 0 1px rgba(196,168,130,0.4),
+        0 24px 60px rgba(61,37,37,0.22),
+        inset 0 0 0 1px rgba(255,255,255,0.06);
+      flex-shrink: 0;
+    }
+
+    /* ノッチ */
+    .phone::before {
+      content: '';
+      position: absolute;
+      top: 14px; left: 50%;
+      transform: translateX(-50%);
+      width: 52px; height: 8px;
+      background: #1a0f0f;
+      border-radius: 0 0 8px 8px;
+      z-index: 2;
+    }
+
+    /* サイドボタン */
+    .phone::after {
+      content: '';
+      position: absolute;
+      right: -3px; top: 80px;
+      width: 3px; height: 48px;
+      background: rgba(196,168,130,0.35);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .phone-screen {
+      border-radius: 26px;
+      overflow: hidden;
+      background: #fff;
+      position: relative;
+    }
+
+    .phone-screen img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* サイズ：大 */
+    .phone-lg { width: 200px; }
+    .phone-lg .phone-screen { height: 380px; }
+
+    /* サイズ：小 */
+    .phone-sm { width: 150px; }
+    .phone-sm .phone-screen { height: 280px; }
+
+    /* ラベル */
+    .mockup-label {
+      text-align: center;
+      margin-top: 12px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: var(--text-mid);
+      letter-spacing: 1px;
+    }
+
+    .mockup-item { display: flex; flex-direction: column; align-items: center; }
+
+    .gallery-more {
+      display: block; text-align: center; margin-top: 32px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px; color: var(--pink-deep); text-decoration: none;
+      letter-spacing: 2px; transition: opacity 0.2s;
+    }
+    .gallery-more:hover { opacity: 0.6; }
+
+    /* ── FEATURES ── */
+    .features-grid { display: flex; flex-direction: column; gap: 24px; }
+    .feature-card {
+      background: var(--white-glass);
+      border: 1px solid rgba(196,168,130,0.3);
+      border-radius: 18px; padding: 28px;
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .feature-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px; font-weight: 300;
+      color: var(--pink);
+      line-height: 1; flex-shrink: 0;
+    }
+    .feature-body h3 {
+      font-size: 15px; font-weight: 600;
+      color: var(--text); margin-bottom: 8px;
+    }
+    .feature-body p {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; line-height: 1.9; color: var(--text-mid);
+    }
+
+    /* ── PROCESS ── */
+    .process-sec { background: var(--pink-pale); }
+    .flow-list { display: flex; flex-direction: column; }
+    .flow-step {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px dashed rgba(196,168,130,0.35);
+    }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-num {
+      flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; margin-top: 2px;
+    }
+    .flow-content h3 {
+      font-size: 15px; font-weight: 600; margin-bottom: 5px;
+    }
+    .flow-content p {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px; color: var(--text-mid); line-height: 1.9;
+    }
+
+    /* ── PRICE ── */
+    .price-sec { background: var(--cream); }
+    .monitor-badge {
+      text-align: center; margin-bottom: 28px;
+    }
+    .monitor-badge span {
+      display: inline-block;
+      border: 1px solid var(--pink);
+      border-radius: 999px;
+      padding: 9px 28px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; color: var(--pink-deep);
+    }
+    .price-card {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(196,168,130,0.35);
+      border-radius: 20px; padding: 44px 28px;
+      text-align: center; margin-bottom: 16px;
+    }
+    .price-name {
+      font-size: 16px; font-weight: 600;
+      letter-spacing: 1px; margin-bottom: 24px;
+    }
+    .price-old {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; color: var(--text-dim);
+      text-decoration: line-through; margin-bottom: 6px;
+    }
+    .price-current {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px; font-weight: 300;
+      color: var(--pink-deep); line-height: 1;
       margin-bottom: 6px;
     }
-
-    .tagline {
+    .price-current span { font-size: 22px; }
+    .price-tax {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; color: var(--text-mid);
+      margin-bottom: 28px;
+    }
+    .price-conditions {
+      text-align: left; margin-bottom: 28px;
+    }
+    .price-conditions li {
+      list-style: none;
+      font-family: 'Noto Sans JP', sans-serif;
       font-size: 12px; color: var(--text-mid);
-      text-align: center; line-height: 1.8;
-      margin-bottom: 8px; letter-spacing: 0.5px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(196,168,130,0.2);
+      display: flex; align-items: center; gap: 10px;
     }
-
-    /* SNS ROW */
-    .sns-row {
-      display: flex; gap: 12px; margin-bottom: 32px;
+    .price-conditions li::before {
+      content: '✦'; color: var(--gold); font-size: 9px; flex-shrink: 0;
     }
-    .sns-btn {
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(255,107,157,0.1);
-      border: 1px solid rgba(255,107,157,0.25);
-      border-radius: 999px;
-      padding: 7px 16px;
-      font-size: 12px; font-weight: 700;
-      color: var(--pink); text-decoration: none;
-      transition: all 0.15s;
-      letter-spacing: 0.5px;
+    .price-note {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; color: var(--text-mid);
+      line-height: 1.8; margin-bottom: 32px;
     }
-    .sns-btn:hover {
-      background: rgba(255,107,157,0.2);
-      border-color: var(--pink);
-    }
-
-    /* LINKS */
-    .links {
-      width: 100%;
-      display: flex; flex-direction: column; gap: 12px;
-    }
-
-    .link-btn {
-      display: flex; align-items: center;
-      width: 100%;
-      background: var(--card);
-      border: 1.5px solid rgba(255,107,157,0.2);
-      border-radius: 18px;
-      padding: 18px 22px;
-      text-decoration: none; color: var(--text);
-      transition: all 0.18s;
-      position: relative; overflow: hidden;
-      gap: 16px;
-    }
-    .link-btn::before {
-      content:'';
-      position:absolute; inset:0;
-      background: var(--grad);
-      opacity:0; transition:opacity 0.18s;
-    }
-    .link-btn:hover {
-      border-color: var(--pink);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(255,107,157,0.2);
-    }
-    .link-btn:hover::before { opacity:0.06; }
-    .link-btn:active { transform: translateY(0); }
-
-    .link-icon {
-      font-size: 26px; flex-shrink: 0;
-      position: relative; z-index:1;
-    }
-    .link-info {
-      flex: 1; position: relative; z-index:1;
-    }
-    .link-title {
-      font-family:'Fredoka One', cursive;
-      font-size: 16px; line-height: 1.3;
-      margin-bottom: 3px;
-    }
-    .link-desc {
-      font-size: 11px; color: var(--text-mid); line-height: 1.5;
-    }
-    .link-badge {
-      flex-shrink: 0;
-      background: var(--grad);
+    .price-cta {
+      display: block;
+      background: linear-gradient(135deg, var(--pink), var(--pink-deep));
       color: #fff;
-      font-family: 'Fredoka One', cursive;
-      font-size: 11px; letter-spacing: 1px;
-      padding: 5px 12px; border-radius: 999px;
-      position: relative; z-index:1;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px; letter-spacing: 1.5px;
+      padding: 18px; border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(155,80,112,0.25);
+      transition: all 0.2s;
     }
-    .link-badge.free {
-      background: rgba(255,107,157,0.15);
-      color: var(--pink);
-      border: 1px solid rgba(255,107,157,0.3);
+    .price-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(155,80,112,0.35); }
+    .price-cta small {
+      display: block; font-size: 11px;
+      opacity: 0.8; margin-top: 4px; letter-spacing: 0.5px;
     }
-
-    /* FEATURED */
-    .link-btn.featured {
-      border-color: rgba(255,107,157,0.5);
-      background: rgba(255,107,157,0.1);
-      box-shadow: 0 0 24px rgba(255,107,157,0.1);
-    }
-
-    /* DIVIDER */
-    .divider {
-      width: 100%; text-align: center;
-      font-size: 11px; color: var(--text-mid);
-      letter-spacing: 2px; text-transform: uppercase;
-      margin: 8px 0 4px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .divider::before, .divider::after {
-      content:''; flex:1; height:1px;
-      background: rgba(255,107,157,0.15);
+    .slots {
+      text-align: center; margin-top: 14px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px; color: var(--pink);
+      letter-spacing: 1px;
     }
 
-    /* FOOTER */
-    .footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 11px; color: var(--text-mid);
-      line-height: 2;
+    /* ── FAQ ── */
+    .faq-sec { background: var(--cream2); }
+    .faq-list { display: flex; flex-direction: column; gap: 14px; }
+    .faq-item {
+      background: var(--white-glass);
+      border: 1px solid rgba(196,168,130,0.25);
+      border-radius: 14px; overflow: hidden;
+    }
+    .faq-q {
+      padding: 18px 22px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px; font-weight: 600;
+      display: flex; gap: 12px; align-items: flex-start;
+      color: var(--text);
+    }
+    .q-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; color: var(--pink); flex-shrink: 0; line-height: 1.3;
+    }
+    .faq-a {
+      padding: 0 22px 18px 22px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; color: var(--text-mid); line-height: 1.9;
+    }
+
+    /* ── PROFILE ── */
+    .profile-card {
+      background: var(--white-glass);
+      border: 1px solid rgba(196,168,130,0.25);
+      border-radius: 20px; padding: 32px;
+      display: flex; gap: 24px; align-items: flex-start;
+    }
+    .profile-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(196,168,130,0.5);
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(155,80,112,0.15);
+    }
+    .profile-name {
+      font-size: 18px; font-weight: 400; margin-bottom: 6px; color: var(--pink-deep);
+    }
+    .profile-body p {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; line-height: 1.9; color: var(--text-mid);
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-sec {
+      position: relative;
+      background-image: url('./img/ima3.jfif');
+      background-size: cover;
+      background-position: center top;
+      padding: 100px 28px;
+    }
+    .cta-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(251,244,240,0.85);
+    }
+    .cta-inner {
+      position: relative;
+      max-width: 480px; margin: 0 auto; text-align: center;
+    }
+    .cta-inner h2 {
+      font-size: clamp(22px, 5.5vw, 34px);
+      font-weight: 400; line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .cta-inner h2 em {
+      font-style: normal; color: var(--pink-deep); font-weight: 600;
+    }
+    .cta-label {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 10px; letter-spacing: 4px;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .cta-body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; color: var(--text-mid);
+      text-align: center; line-height: 2.1; margin-bottom: 14px;
+    }
+    .cta-btn-wrap { margin: 36px 0 20px; }
+    .cta-btn {
+      display: inline-flex; flex-direction: column; align-items: center;
+      background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+      color: #fff;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px; letter-spacing: 1.5px;
+      padding: 20px 52px; border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(155,80,112,0.3);
+      transition: all 0.2s;
+    }
+    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(155,80,112,0.4); }
+    .cta-btn small {
+      font-size: 11px; opacity: 0.85; margin-top: 4px; letter-spacing: 0.5px;
+    }
+    .cta-note {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; color: var(--text-dim); line-height: 2;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      padding: 40px 28px; text-align: center;
     }
     .footer-brand {
-      font-family:'Fredoka One', cursive;
-      font-size: 16px;
-      background: var(--grad);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-      margin-bottom: 4px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; color: var(--gold);
+      letter-spacing: 2px; margin-bottom: 16px;
     }
-
-    /* FLOATING STARS */
-    .star {
-      position: fixed; font-size: 14px; pointer-events: none;
-      animation: starFloat linear infinite; opacity: 0;
+    .footer-links {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 12px; margin-bottom: 20px;
     }
-    @keyframes starFloat {
-      0%   { opacity:0; transform:translateY(20px) rotate(0deg); }
-      15%  { opacity:0.6; }
-      85%  { opacity:0.4; }
-      100% { opacity:0; transform:translateY(-120px) rotate(720deg); }
+    .footer-link {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; color: rgba(255,255,255,0.5); text-decoration: none;
+      padding: 5px 14px;
+      border: 1px solid rgba(196,168,130,0.25); border-radius: 999px;
+      letter-spacing: 0.5px; transition: all 0.15s;
+    }
+    .footer-link:hover { color: var(--gold); border-color: var(--gold); }
+    .footer-copy {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
 
-  <div class="wrap">
-
-    <!-- AVATAR -->
-    <div class="avatar-wrap">
-      <img src="https://i.ibb.co/gbV2MY0f/Miiiii-SNS-16.webp" alt="ゆめ">
-    </div>
-
-    <!-- NAME -->
-    <p class="name">ゆめ 🍒</p>
-    <p class="tagline">
-      好きな世界観を、AIで形にする人<br>
-      Midjourney × Claude で LP制作・AI副業
-    </p>
-
-    <!-- SNS -->
-    <div class="sns-row">
-      <a href="https://www.threads.com/@yume.meltlog_" target="_blank" class="sns-btn">
-        ✦ Threads
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-target">
+        ネイルサロン・カフェ・ハンドメイドショップ・<br>
+        個人サロンのオーナーさま
+      </p>
+      <h1 class="hero-title">
+        あなたの世界観を、<br>
+        <em>1枚のページ</em>に。
+      </h1>
+      <div class="hero-tags">
+        <span class="hero-tag">予約につながる</span>
+        <span class="hero-tag">世界観が伝わる</span>
+        <span class="hero-tag">ファンが増える</span>
+      </div>
+      <a href="https://forms.gle/7m7PqfNnYpdXwpzK7" target="_blank" class="hero-cta">
+        LP制作を相談する
       </a>
     </div>
+  </section>
 
-    <!-- LINKS -->
-    <div class="links">
+  <!-- PAIN -->
+  <section class="sec pain-sec">
+    <div class="sec-inner">
+      <p class="ornament">✦ ✦ ✦</p>
+      <h2 class="sec-title">こんな悩み、<em>ありませんか？</em></h2>
+      <div class="gold-rule"></div>
+      <div class="pain-list">
+        <div class="pain-item">予約がDMだけで取りこぼしてる</div>
+        <div class="pain-item">世界観がInstagramだけじゃ伝わらない</div>
+        <div class="pain-item">新規さんが料金・メニューを探しづらそう</div>
+        <div class="pain-item">ホームページを作る余裕はない</div>
+        <div class="pain-item">でもお店の魅力をちゃんと届けたい</div>
+      </div>
+      <p style="text-align:center; margin-top:28px; font-family:'Noto Sans JP',sans-serif; font-size:13px; color:var(--pink-deep);">
+        そのお悩み、ぜんぶおまかせください♡
+      </p>
+    </div>
+  </section>
 
-      <!-- NOTE 教材 -->
-      <a href="https://note.com/yume_meltlog/n/nd98d027ad74a" target="_blank" class="link-btn featured">
-        <span class="link-icon">🍒</span>
-        <div class="link-info">
-          <div class="link-title">PDF教材を購入する</div>
-          <div class="link-desc">世界観ごとAIで売る方法｜Claude×MidjourneyでLP制作</div>
+  <!-- GALLERY / MOCKUP -->
+  <div class="gallery-sec">
+    <div class="gallery-inner">
+      <p class="ornament">✦ ✦ ✦</p>
+      <h2 class="sec-title">制作<em>実績</em></h2>
+      <div class="gold-rule"></div>
+      <p class="sec-desc">AIで生み出す、唯一無二の世界観。<br>あなたのブランドをこんな風に形にします。</p>
+
+      <div class="mockup-stage">
+
+        <!-- 上段：メイン実績2台 -->
+        <div class="mockup-row">
+          <div class="mockup-item">
+            <div class="phone phone-sm">
+              <div class="phone-screen">
+                <img src="./img/works-04.jpg" alt="LP制作実績">
+              </div>
+            </div>
+            <p class="mockup-label">無料モニター様LP</p>
+          </div>
+          <div class="mockup-item">
+            <div class="phone phone-sm">
+              <div class="phone-screen">
+                <img src="./img/works-03.jpg" alt="LP制作実績">
+              </div>
+            </div>
+            <p class="mockup-label">制作サンプル「雲のサブスク」LP</p>
+          </div>
         </div>
-        <div class="link-badge">¥3,980</div>
-      </a>
 
-      <div class="divider">LP制作サービス</div>
-
-      <!-- LP 依頼 -->
-      <a href="https://forms.gle/7m7PqfNnYpdXwpzK7" target="_blank" class="link-btn">
-        <span class="link-icon">📋</span>
-        <div class="link-info">
-          <div class="link-title">LP制作を依頼する</div>
-          <div class="link-desc">ヒアリングシートに回答してください</div>
+        <!-- 下段：参考作品2台 -->
+        <div class="mockup-row">
+          <div class="mockup-item">
+            <div class="phone phone-sm">
+              <div class="phone-screen">
+                <img src="./img/works-01.jpg" alt="note特典ツール">
+              </div>
+            </div>
+            <p class="mockup-label">note特典「LPメーカー」</p>
+          </div>
+          <div class="mockup-item">
+            <div class="phone phone-sm">
+              <div class="phone-screen">
+                <img src="./img/works-02.jpg" alt="自作LP">
+              </div>
+            </div>
+            <p class="mockup-label">自作LP（動画ヒーロー）</p>
+          </div>
         </div>
-        <div class="link-badge">受付中</div>
+
+      </div>
+
+      <a href="https://jazzy-yeot-2ad69e.netlify.app/" target="_blank" class="gallery-more">
+        ✦ ポートフォリオをもっと見る
       </a>
-
-      <!-- PORTFOLIO -->
-      <a href="https://thunderous-hummingbird-3a77fb.netlify.app/" target="_blank" class="link-btn">
-        <span class="link-icon">🎨</span>
-        <div class="link-info">
-          <div class="link-title">作品を見る</div>
-          <div class="link-desc">AI Art & LP制作ポートフォリオ</div>
-        </div>
-        <div class="link-badge free">Gallery</div>
-      </a>
-
     </div>
-
-    <!-- FOOTER -->
-    <div class="footer">
-      <div class="footer-brand">yume.meltlog_ 🍒</div>
-      <div>© 2025 ゆめ（@yume.meltlog_）</div>
-    </div>
-
   </div>
 
-  <script>
-    const icons = ['🍒','✨','💕','⭐','🌸','💫'];
-    for(let i = 0; i < 15; i++) {
-      const el = document.createElement('div');
-      el.className = 'star';
-      el.textContent = icons[Math.floor(Math.random() * icons.length)];
-      el.style.cssText = `
-        left:${Math.random()*100}vw;
-        top:${Math.random()*100}vh;
-        font-size:${10+Math.random()*10}px;
-        animation-delay:${Math.random()*8}s;
-        animation-duration:${5+Math.random()*6}s;
-      `;
-      document.body.appendChild(el);
-    }
-  </script>
+  <!-- FEATURES -->
+  <section class="sec">
+    <div class="sec-inner">
+      <p class="ornament">✦ ✦ ✦</p>
+      <h2 class="sec-title">選ばれる<em>理由</em></h2>
+      <div class="gold-rule"></div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-num">01</div>
+          <div class="feature-body">
+            <h3>「言語化できない」を拾います</h3>
+            <p>ヒアリングで「なんとなくこんな感じ」という感覚を丁寧に言語化。あなたが言葉にできなかったこだわりを、ページに落とし込みます。</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">02</div>
+          <div class="feature-body">
+            <h3>Midjourney × Claude で唯一無二に</h3>
+            <p>AIツールを使いこなすことで、他の誰にも真似できない世界観を実現。量産型ではない、あなただけのビジュアルを作ります。</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">03</div>
+          <div class="feature-body">
+            <h3>納得いくまで一緒に作ります</h3>
+            <p>「なんか違う」をなくすために、「これです！」と言ってもらえるまで何度でも調整します。途中で諦めません。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec process-sec">
+    <div class="sec-inner">
+      <p class="ornament">✦ ✦ ✦</p>
+      <h2 class="sec-title">ご依頼の<em>流れ</em></h2>
+      <div class="gold-rule"></div>
+      <div class="flow-list">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-content">
+            <h3>ヒアリングフォームに記入</h3>
+            <p>お店の情報・世界観・ご要望をフォームでお聞きします。3〜5分で完了します。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-content">
+            <h3>ご確認・お支払い</h3>
+            <p>内容を確認後、お見積りをお送りします。PayPay・銀行振込でお支払いいただけます。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-content">
+            <h3>LP制作・納品</h3>
+            <p>Midjourney × Claude Codeで丁寧に制作。世界観にこだわったLPをお届けします。約7〜10日。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-content">
+            <h3>修正・完成</h3>
+            <p>修正対応込み。完成後はそのままSNSのリンクとしてお使いください♡</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="sec price-sec">
+    <div class="sec-inner">
+      <p class="ornament">✦ ✦ ✦</p>
+      <h2 class="sec-title">料<em>金</em></h2>
+      <div class="gold-rule"></div>
+      <div class="monitor-badge">
+        <span>先着5名様 モニター募集中</span>
+      </div>
+      <div class="price-card">
+        <p class="price-name">世界観LP制作プラン</p>
+        <p class="price-old">¥29,800</p>
+        <p class="price-current"><span>¥</span>19,800<span>〜</span></p>
+        <p class="price-tax">税込 ／ 内容により変動あり</p>
+        <ul class="price-conditions">
+          <li>制作実績としての掲載にご同意いただける方</li>
+          <li>お客様の声のご提供にご協力いただける方</li>
+          <li>ヒアリング・方向性のすり合わせ込み</li>
+          <li>Midjourney × Claude によるデザイン制作</li>
+          <li>修正対応（納得いくまで）</li>
+          <li>納期：約7〜10日</li>
+        </ul>
+        <p class="price-note">※ お支払い方法は PayPay・銀行振込のみになります</p>
+        <a href="https://forms.gle/7m7PqfNnYpdXwpzK7" target="_blank" class="price-cta">
+          ヒアリングフォームへ進む
+          <small>3分で完了・無料相談もこちらから</small>
+        </a>
+      </div>
+      <p class="slots">✦ 今月の受付枠：残りわずか</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec faq-sec">
+    <div class="sec-inner">
+      <p class="ornament">✦ ✦ ✦</p>
+      <h2 class="sec-title">よくある<em>質問</em></h2>
+      <div class="gold-rule"></div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q"><span class="q-label">Q.</span> どんなジャンルでも対応できますか？</div>
+          <p class="faq-a">ハンドメイド、コーチング、サロン、占い、ブランド販売など、世界観を持っているお仕事であれば対応可能です。まずはフォームからご相談ください。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="q-label">Q.</span> 世界観がうまく説明できないのですが大丈夫ですか？</div>
+          <p class="faq-a">大丈夫です。むしろそれが一番多いケースです。ヒアリングで「なんとなくこんな感じ」を丁寧に引き出すのが得意なので、安心してご相談ください。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="q-label">Q.</span> 完成したLPはどうやって使えますか？</div>
+          <p class="faq-a">URLでそのまま公開できる形でお渡しします。SNSのプロフィールリンクに設定するだけですぐ使えます。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="q-label">Q.</span> AIで作ったLPって安っぽくなりませんか？</div>
+          <p class="faq-a">世界観にこだわったプロンプト設計と、丁寧なヒアリングで「あなたらしさ」を引き出すので、量産感のない仕上がりになります。ポートフォリオでぜひご確認ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="sec">
+    <div class="sec-inner">
+      <p class="ornament">✦ ✦ ✦</p>
+      <h2 class="sec-title">制作者<em>について</em></h2>
+      <div class="gold-rule"></div>
+      <div class="profile-card">
+        <img src="https://i.ibb.co/gbV2MY0f/Miiiii-SNS-16.webp" alt="ゆめ" class="profile-avatar">
+        <div>
+          <p class="profile-name">ゆめ 🍒</p>
+          <p class="profile-body" style="font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.9; color:var(--text-mid);">
+            世界観にこだわる人の集客ページ職人。<br>
+            Midjourney × Claude Code で、<br>
+            あなたの「言語化できないこだわり」を<br>
+            1枚のページに変換します。<br><br>
+            ハンドメイド・コーチング・サロン・個人ブランドなど、<br>
+            小さなお店・個人事業主の方へ。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-sec">
+    <div class="cta-inner">
+      <p class="cta-label">C O N T A C T</p>
+      <h2>あなたの世界観を、<br><em>ちゃんと届く</em>カタチに。</h2>
+      <div class="gold-rule"></div>
+      <p class="cta-body">
+        お店の魅力を、もっと伝えて<br>
+        もっと愛されるお店へ。<br>
+        心配やお悩みがありましたら<br>
+        すぐにご相談ください
+      </p>
+      <div class="cta-btn-wrap">
+        <a href="https://forms.gle/7m7PqfNnYpdXwpzK7" target="_blank" class="cta-btn">
+          ヒアリングフォームへ進む
+          <small>3分で完了・無料相談もこちらから</small>
+        </a>
+      </div>
+      <p class="cta-note">
+        一緒に、最高の「顔」を作りましょう♡<br>
+        ※ AIでの制作になりますのでご了承ください
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-brand">yume.meltlog_</p>
+    <div class="footer-links">
+      <a href="https://www.threads.com/@yume.meltlog_" target="_blank" class="footer-link">Threads</a>
+      <a href="https://note.com/yume_meltlog/n/nd98d027ad74a" target="_blank" class="footer-link">PDF教材 ¥3,980</a>
+      <a href="https://jazzy-yeot-2ad69e.netlify.app/" target="_blank" class="footer-link">Portfolio</a>
+    </div>
+    <p class="footer-copy">© 2025 ゆめ（@yume.meltlog_）｜Midjourney × Claude Code でLP制作</p>
+  </footer>
 
 </body>
 </html>
